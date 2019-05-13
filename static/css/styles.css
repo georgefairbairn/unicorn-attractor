@@ -99,22 +99,26 @@
   text-decoration: none;
   color: #e1ffff;
 }
+
 .nav-side-menu li a i {
   padding-left: 10px;
   width: 20px;
   padding-right: 20px;
 }
+
 .nav-side-menu li:hover {
   border-left: 3px solid magenta;
   background-color: #4f5b69;
   transition: all 1s ease;
 }
+
 @media (max-width: 767px) {
   .nav-side-menu {
     position: relative;
     width: 100%;
     margin-bottom: 10px;
   }
+  
   .nav-side-menu .toggle-btn {
     display: block;
     cursor: pointer;
@@ -127,6 +131,7 @@
     width: 40px;
     text-align: center;
   }
+  
   .brand {
     text-align: left !important;
     font-size: 22px;
@@ -140,6 +145,7 @@
     margin-bottom: 15px;
   }
 }
+
 @media (min-width: 767px) {
   .nav-side-menu .menu-list .menu-content {
     display: block;
