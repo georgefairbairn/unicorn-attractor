@@ -1,0 +1,37 @@
+{% extends 'base.html' %} 
+{% block title %} Tickets {% endblock %} 
+{% block content %} 
+{% for ticket in tickets %}
+<!--<a class="no-underline" href="{% url 'ticket_detail' ticket.id %}">-->
+    <div class="card">
+        <div class="card-header">
+                    {% if ticket.ticket_type == 'Bug' %}
+                    <i class="fa fa-bug fa-lg page-icon"></i><span>BUG</span> 
+                    {% else %}
+                    <i class="fa fa-lightbulb fa-lg page-icon"></i><span>FEATURE REQUEST</span>
+                    {% endif %}
+        </div>
+        <div class="card-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 text-center text-md-left">
+                        <h6 class="card-title">{{ ticket.title.upper }}</h6>
+                        <p class="card-text">{{ ticket.summary|truncatewords:30 }}...</p>
+                    </div>
+                    <div class="col-sm-4 col-md-3 text-center">
+                        <h6>STATUS</h6>
+                        <p>{{ ticket.status.upper }}</p>
+                    </div>
+                    <div class="col-sm-4 col-md-2 text-center">
+                        <h6>UPVOTES</h6>    
+                        <span class="text-center">{{ ticket.upvotes }}</span>
+                    </div>
+                    <div class="col-sm-4 col-md-1" id="upvote-icon">
+                        <span class="align-text-bottom"><i class="fas fa-angle-double-up fa-2x"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--</a>-->
+{% endfor %} {% endblock %}

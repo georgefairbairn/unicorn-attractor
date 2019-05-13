@@ -1,0 +1,40 @@
+{% extends 'base.html' %} 
+{% block title %} Ticket #{{ ticket.id }} {% endblock %} 
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="card">
+                <div class="card-header">
+                    TITLE
+                </div>
+                <div class="card-body">
+                    {{ ticket.title }}
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="card">
+                <div class="card-header">
+                    STATUS
+                </div>
+                <div class="card-body">
+                    {{ ticket.status }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    SUMMARY
+                </div>
+                <div class="card-body">
+                    {{ ticket.summary }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
