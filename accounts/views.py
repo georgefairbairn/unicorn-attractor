@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 # Create your views here.
 def index(request):
     """ Return the index.html file """
-    return render(request, 'index.html')
+    return render(request, 'tickets.html')
     
 @login_required    
 def logout(request):

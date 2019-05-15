@@ -1,5 +1,15 @@
 {% extends 'base.html' %} 
+{% load bootstrap_tags %}
 {% block title %} Create Ticket {% endblock %} 
 {% block content %}
-    
+    {% if edit_state %}
+    <h1>EDIT TICKET</h1>
+    {% else %}
+    <h1>NEW TICKET</h1>
+    {% endif %}    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form | as_bootstrap }}
+        <button type="submit" class="btn btn-info">SAVE CHANGES</button>
+    </form>
 {% endblock %}

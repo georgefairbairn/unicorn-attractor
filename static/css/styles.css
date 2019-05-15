@@ -177,17 +177,12 @@ body {
   border: 0px;
 }
 
-.card:hover {
-  border-left: 3px solid magenta;
-  transition: all 1s ease;
-}
-
 .card-body {
   background-color: #E1FFFF;
   margin-bottom: 0px;
 }
 
-.card-header {
+.card-header, .card-footer, .modal-header, .modal-footer {
   background-color: #2E353D;
   color: #E1FFFF;
   border: none;
@@ -201,9 +196,40 @@ body {
 #upvote-icon {
   padding-left: 0px;
   padding-top: 10px;
+  color: #2E353D;
+  text-decoration: none;
 }
 
-#upvote-icon:hover {
+#upvote-icon:hover, .comments-btn:hover, .view-link:hover {
   color: magenta;
   transition: all 0.5s ease;
 }
+
+.comments-btn {
+  color: #E1FFFF;
+  margin-right: 10px;
+  height: 24px;
+}
+
+.btn {
+  color: #E1FFFF;
+  padding-top: 0px;
+}
+
+.btn:hover {
+  color: #E1FFFF;
+}
+
+.view {
+  margin-right: 10px;
+}
+
+.no-padding-lr  {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.view-link {
+  color: #E1FFFF;
+}
+

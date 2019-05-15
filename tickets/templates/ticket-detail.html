@@ -2,39 +2,211 @@
 {% block title %} Ticket #{{ ticket.id }} {% endblock %} 
 {% block content %}
 <div class="container">
+    <div class="row text-center">
+        {% if user.is_authenticated %}
+            <div class="col-6">
+                <a href="{% url 'edit_ticket' ticket.id %}" class="btn btn-outline-success">
+                    <span>EDIT<i class="fas fa-edit fa-lg page-icon"></i></span>
+                </a>
+            </div>
+            <div class="col-6">
+                <a class="btn btn-outline-danger">
+                    <span>DELETE<i class="fas fa-trash-alt fa-lg page-icon"></i></span>
+                </a>    
+            </div>
+        {% endif %}
+    </div>
     <div class="row">
-        <div class="col-xs-8">
-            <div class="card">
+        <div class="col-6">
+            <div class="card text-center">
                 <div class="card-header">
-                    TITLE
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6>TITLE</h6>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
-                    {{ ticket.title }}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>{{ ticket.title }}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-xs-4">
-            <div class="card">
+        <div class="col-6">
+            <div class="card text-center">
                 <div class="card-header">
-                    STATUS
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6>STATUS</h6>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
-                    {{ ticket.status }}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>{{ ticket.status.upper }}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    SUMMARY
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6>SUMMARY</h6>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
-                    {{ ticket.summary }}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>{{ ticket.summary }}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+    {% if ticket.screenshot %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6>SCREENSHOT</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <a class="btn btn-primary" href="{{ MEDIA_URL }}{{ ticket.screenshot }}" target"_blank">Click to view image
+                                    <i class="fas fa-images fa-lg page-icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        <div class="col-6">
+            <div class="card text-center">
+                <div class="card-header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6>CREATED BY</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>{{ ticket.creator }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card text-center">
+                <div class="card-header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6>CREATED DATE</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>{{ ticket.initiation_date|date:"SHORT_DATE_FORMAT" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="card text-center">
+                <div class="card-header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6>UPVOTES</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>{{ ticket.upvotes }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if ticket.completion_date %}
+        <div class="col-6">
+            <div class="card text-center">
+                <div class="card-header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <h6>COMPLETED</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <p>{{ ticket.completion_date|date:"SHORT_DATE_FORMAT" }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
