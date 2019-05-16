@@ -9,6 +9,7 @@ class Ticket(models.Model):
     ticket_type = models.CharField(max_length=30, blank=False)
     screenshot = models.ImageField(upload_to="images", blank=True, null=True)
     upvotes = models.IntegerField(default=0)
+    total_paid = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     creator = models.CharField(max_length=150, blank=False) 
     category = models.CharField(max_length=30, default='', blank=False)
     status = models.CharField(max_length=30, default='Backlog')
