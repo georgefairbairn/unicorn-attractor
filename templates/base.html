@@ -29,11 +29,13 @@
                         <i class="fa fa-ticket-alt fa-lg page-icon"></i> TICKETS
                     </a>
                 </li>
-                <li>
-                    <a href="{% url 'new_ticket' %}">
-                        <i class="fa fa-plus fa-lg page-icon"></i> CREATE TICKET
-                    </a>
+                <li data-toggle="collapse" data-target="#ticket-types" class="collapsed active">
+                    <a><i class="fa fa-plus fa-lg page-icon"></i> CREATE TICKET <span class="arrow text-right"><i class="fa fa-chevron-down fa-lg"></i></span></a>
                 </li>
+                <ul class="sub-menu collapse" id="ticket-types">
+                    <li><a href="{% url 'create_bug' %}"><i class="fa fa-bug fa-lg"></i> BUG</a></li>
+                    <li><a href="{% url 'create_feature_request' %}"><i class="fa fa-lightbulb fa-lg"></i> FEATURE REQUEST</a></li>
+                </ul>
                 <li>
                     <a href="#">
                         <i class="fa fa-chart-bar fa-lg page-icon"></i> STATISTICS
@@ -54,11 +56,24 @@
                         <i class="fa fa-info-circle fa-lg page-icon"></i> ABOUT
                     </a>
                 </li>
+                {% if user.is_authenticated %}
                 <li>
                     <a href="{% url 'profile' %}">
                         <i class="fa fa-user-circle fa-lg page-icon"></i> PROFILE
                     </a>
                 </li>
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <i class="fa fa-sign-out-alt fa-lg page-icon"></i> LOG OUT
+                    </a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'login' %}">
+                        <i class="fa fa-sign-in-alt fa-lg page-icon"></i> LOG IN
+                    </a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>

@@ -7,10 +7,12 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-6 text-left no-padding-lr">
-                                {% if ticket.ticket_type == 'Bug' %}
+                                {% if ticket.ticket_type == 'bug' %}
                                 <i class="fa fa-bug fa-lg page-icon"></i>
-                                <span>BUG</span> {% else %}
-                                <i class="fa fa-lightbulb fa-lg page-icon"></i><span>FEATURE REQUEST</span> {% endif %}
+                                <span>BUG</span> 
+                                {% else %}
+                                <i class="fa fa-lightbulb fa-lg page-icon"></i><span>FEATURE REQUEST</span>
+                                {% endif %}
                             </div>
                             <div class="col-sm-6 text-right no-padding-lr view-btn">
                                 <a class="view-link" href="{% url 'ticket_detail' ticket.id %}">
