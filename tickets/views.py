@@ -20,12 +20,48 @@ def all_tickets(request):
     
 
 @login_required    
-def upvote(request, pk, called_from):
+def upvote(request, pk):
     ticket = get_object_or_404(Ticket, pk=pk)
     ticket.upvotes += 1
     ticket.save()
     return redirect(reverse('index'))
     
+@login_required
+def upvote_payment(request, pk):
+    
+    ticket = get_object_or_404(Ticket, pk=pk)
+    
+    if request.method=="POST":
+        payment_form = PaymentForm(request.POST)
+        if payment_form.is_valid():
+            try:
+                customer = stripe.Charge.create(amount = 500,
+                                                currency = "GBP",
+                                                description = request.user.email,
+                                                card = payment_form.cleaned_data['stripe_id'],
+                                                )
+            except:
+                messages.error(request, "Your card was declined")
+                
+            if customer.paid:
+                messages.error(request, "Your payment was successful")
+                new_total = float(ticket.total_paid) + (customer.amount/100)
+                ticket.total_paid = new_total
+                ticket.save()
+                return redirect(upvote, ticket.id)
+                
+            else:
+                messages.error(request, "Unable to take payment")
+        
+        else:
+            print(payment_form.errors)
+            messages.error(request, "We were unable to take payment with that card")
+            
+    else:
+        payment_form = PaymentForm()
+        
+    return render(request, "upvote-payment.html", {'ticket': ticket, 'payment_form': payment_form, 'publishable': settings.STRIPE_PUBLISHABLE})
+                
     
 def ticket_detail(request, pk):
     ticket = get_object_or_404(Ticket, pk=pk)
