@@ -31,8 +31,8 @@
                         <i class="fa fa-ticket-alt fa-lg page-icon"></i> TICKETS
                     </a>
                 </li>
-                <li data-toggle="collapse" data-target="#ticket-types" class="collapsed active">
-                    <a><i class="fa fa-plus fa-lg page-icon"></i> CREATE TICKET <span class="arrow text-right"><i class="fa fa-chevron-down fa-lg"></i></span></a>
+                <li data-toggle="collapse" data-target="#ticket-types" class="collapsed">
+                    <a><i class="fa fa-plus fa-lg page-icon"></i> CREATE TICKET <span class="arrow"></span></a>
                 </li>
                 <ul class="sub-menu collapse" id="ticket-types">
                     <li><a href="{% url 'create_bug' %}"><i class="fa fa-bug fa-lg"></i> BUG</a></li>
@@ -44,12 +44,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="fa fa-gift fa-lg page-icon"></i> DONATE
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
+                    <a href="{% url 'get_posts' %}">
                         <i class="fa fa-newspaper fa-lg page-icon"></i> BLOG
                     </a>
                 </li>
@@ -89,11 +84,7 @@
         </div>
     {% endif %}
     <div class="container" id="main">
-        <div class="row">
-            <div class="col-xs-12">
-                {% block content %} {% endblock %}
-            </div>
-        </div>
+        {% block content %} {% endblock %}
     </div>
     
     <!-- Feature Request Creation Payment Reminder -->

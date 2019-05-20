@@ -56,7 +56,7 @@
 
 .nav-side-menu ul .active,
 .nav-side-menu li .active {
-  border-left: 3px solid #d19b3d;
+  border-left: 3px solid magenta;
   background-color: #4f5b69;
 }
 
@@ -87,9 +87,9 @@
 .nav-side-menu ul .sub-menu li:before,
 .nav-side-menu li .sub-menu li:before {
   font-family: "Font Awesome 5 Free";
-  content: "\f105";
+  content: "\f0c8";
   display: inline-block;
-  padding-left: 10px;
+  padding-left: 30px;
   padding-right: 10px;
   vertical-align: middle;
 }
@@ -149,6 +149,36 @@
   .card-body .container-fluid .row div {
     margin-bottom: 15px;
   }
+  
+  .ticket-status {
+    margin-top: 20px;
+  }
+  
+  .ticket-upvotes {
+    margin-top: 5px;
+  }
+  
+  .upvote-icon {
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    border: 3px solid #4f5b69;
+    border-radius: 10px;
+    background-color: #2E353D;
+  }
+  
+  .upvote-icon i {
+    color: #E1FFFF;
+  }
+  
+  .create-btn {
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    border: 3px solid #4f5b69;
+    border-radius: 10px;
+    background-color: #2E353D;
+  }
 }
 
 @media (min-width: 767px) {
@@ -160,6 +190,14 @@
   	float: right;
   	margin-top: 15px;
   }
+  
+  .upvote-icon {
+    padding-left: 0px;
+    padding-top: 10px;
+    color: #2E353D;
+    text-decoration: none;
+  }
+
 }
 
 body {
@@ -198,14 +236,7 @@ body {
   border-color: #2E353D;
 }
 
-#upvote-icon {
-  padding-left: 0px;
-  padding-top: 10px;
-  color: #2E353D;
-  text-decoration: none;
-}
-
-#upvote-icon:hover, .comments-btn:hover, .view-link:hover {
+.upvote-icon:hover, .comments-btn:hover, .view-link:hover {
   color: magenta;
   transition: all 0.5s ease;
 }
@@ -229,12 +260,26 @@ body {
   margin-right: 10px;
 }
 
-.no-padding-lr  {
+.card-title  {
   padding-left: 0px;
   padding-right: 0px;
+  padding-top: 5px;
+  margin-bottom: 0px;
 }
 
 .view-link {
   color: #E1FFFF;
 }
 
+.ticket-title {
+  border-bottom: 2px solid #2E353D;
+  padding-bottom: 10px;
+}
+
+.upvote-icon a {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 10px;
+  color: #2E353D;
+  text-decoration: none;
+}

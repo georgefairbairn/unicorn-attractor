@@ -17,4 +17,4 @@ class Ticket(models.Model):
     completion_date = models.DateTimeField(blank=True, null=True)
     
     def __str__(self):
-        return self.title
+        return "{0} - {1}".format(self.ticket_type, self.title)
