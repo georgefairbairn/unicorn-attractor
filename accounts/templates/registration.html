@@ -7,9 +7,14 @@
 {% block page_heading %}User Registration{% endblock %}
 
 {% block content %}
+<h1 class="new-ticket-title"><i class="fa fa-user-plus fa-md page-icon"></i>REGISTER</h1>
 <form method="POST">
     {% csrf_token %}
     {{registration_form | as_bootstrap}}
-    <button type="submit" class="btn btn-default">Register</button>
+    <div class="row">
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-base">REGISTER</button>  
+        </div>
+    </div>
 </form>
 {% endblock %}

@@ -19,6 +19,7 @@ from django.views.generic import RedirectView
 from accounts import urls as urls_accounts
 from tickets import urls as urls_tickets
 from blog import urls as urls_blog
+from stats import urls as urls_stats
 from tickets.views import all_tickets
 from django.views.static import serve
 from .settings import MEDIA_ROOT
@@ -29,5 +30,6 @@ urlpatterns = [
     url(r'^accounts/', include(urls_accounts)),
     url(r'^tickets/', include(urls_tickets)),
     url(r'^blog/', include(urls_blog)),
+    url(r'^stats/', include(urls_stats)),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
 ]

@@ -7,11 +7,22 @@
 {% block page_heading %}User Login{% endblock %}
 
 {% block content %}
+<h1 class="new-ticket-title"><i class="fa fa-sign-in-alt fa-md page-icon"></i>LOG IN</h1>
 <form method="POST">
     {% csrf_token %}
     {{login_form | as_bootstrap}}
-    <button type="submit" class="btn btn-default">Login</button>
+    <div class="row">
+        <div class="col-12 text-center login">
+            <button type="submit" class="btn btn-base">LOG IN</button>        
+        </div>
+        <div class="col-12 text-center">
+            <a class="btn btn-secondary login" href="{% url 'password_reset' %}">FORGOTTEN PASSWORD?</a></p>    
+        </div>
+        <div id="register" class="col-12 text-center">
+            <a class="btn btn-secondary login" href="{% url 'registration' %}">REGISTER</a></p>    
+        </div>
+    </div>
 </form>
 
-<p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+
 {% endblock %}

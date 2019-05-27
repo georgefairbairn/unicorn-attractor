@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% block title %} Blog {% endblock %} 
 {% block content %}
    {% if user.is_superuser %}
     <div class="row">
         <div class="col-8 offset-2 text-center">
-            <a href="{% url 'new_post' %}" class="btn btn-primary">CREATE BLOG POST <i class="fa fa-plus fa-lg page-icon"></i></a>
+            <a href="{% url 'new_post' %}" class="btn btn-base"><i class="fa fa-plus fa-lg page-icon"></i>CREATE BLOG POST</a>
         </div>
     </div>
     {% endif %}

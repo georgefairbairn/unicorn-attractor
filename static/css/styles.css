@@ -38,6 +38,12 @@
   cursor: pointer;
 }
 
+.menu-content li i {
+  padding-left: 10px;
+  color: #E1FFFF;
+  text-decoration: none;
+}
+
 .nav-side-menu ul :not(collapsed) .arrow:before,
 .nav-side-menu li :not(collapsed) .arrow:before {
   font-family: "Font Awesome 5 Free"; 
@@ -52,6 +58,15 @@
 
 .arrow {
   float: right;
+}
+
+.sub-menu a {
+  color: #E1FFFF;
+  text-decoration: none;
+}
+
+.sub-menu a li {
+  padding-left: 20px;
 }
 
 .nav-side-menu ul .active,
@@ -86,12 +101,7 @@
 
 .nav-side-menu ul .sub-menu li:before,
 .nav-side-menu li .sub-menu li:before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f0c8";
-  display: inline-block;
-  padding-left: 30px;
-  padding-right: 10px;
-  vertical-align: middle;
+  margin-left: 30px;
 }
 
 .nav-side-menu li {
@@ -100,7 +110,7 @@
   border-bottom: 1px solid #23282e;
 }
 
-.nav-side-menu li a {
+.nav-side-menu li a, .menu-content a {
   text-decoration: none;
   color: #e1ffff;
 }
@@ -146,7 +156,7 @@
     padding-bottom: 10px;
   }
   
-  .card-body .container-fluid .row div {
+  .card-body .container .row div {
     margin-bottom: 15px;
   }
   
@@ -179,6 +189,27 @@
     border-radius: 10px;
     background-color: #2E353D;
   }
+  
+  .card-body .container .row div.comment-author {
+    margin-bottom: 0px;
+  }
+  
+  .card-header {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  
+  .card-title {
+    padding-top: 6px;
+    padding-left: 15px;
+    padding-right: 0px;
+    margin-bottom: 0px;
+  }
+  
+  .new-ticket-title, .payment-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
 }
 
 @media (min-width: 767px) {
@@ -196,6 +227,13 @@
     padding-top: 10px;
     color: #2E353D;
     text-decoration: none;
+  }
+  
+  .card-title  {
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 5px;
+    margin-bottom: 0px;
   }
 
 }
@@ -220,7 +258,7 @@ body {
   border: 0px;
 }
 
-.card-body {
+.card-body, .modal-body {
   background-color: #E1FFFF;
   margin-bottom: 0px;
 }
@@ -231,40 +269,29 @@ body {
   border: none;
 }
 
-.btn-base {
-  background-color: magenta;
-  border-color: #2E353D;
+.btn-base, .btn-info {
+  margin-bottom: 10px;
+  color: #E1FFFF;
+  border: 3px solid #4f5b69;
+  border-radius: 10px;
+  background-color: #2E353D;
 }
 
-.upvote-icon:hover, .comments-btn:hover, .view-link:hover {
+.btn-secondary {
+  margin-bottom: 10px;
+  color: #2E353D;
+  border: 3px solid #2E353D;
+  border-radius: 10px;
+  background-color: #4f5b69;
+}
+
+.upvote-icon a:hover, .comments-btn:hover, .view-link:hover, .btn-base:hover {
   color: magenta;
   transition: all 0.5s ease;
 }
 
-.comments-btn {
-  color: #E1FFFF;
-  margin-right: 10px;
-  height: 24px;
-}
-
-.btn {
-  color: #E1FFFF;
-  padding-top: 0px;
-}
-
-.btn:hover {
-  color: #E1FFFF;
-}
-
 .view {
   margin-right: 10px;
-}
-
-.card-title  {
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-top: 5px;
-  margin-bottom: 0px;
 }
 
 .view-link {
@@ -282,4 +309,81 @@ body {
   padding-top: 10px;
   color: #2E353D;
   text-decoration: none;
+}
+
+.view-link .btn {
+  color: #E1FFFF;
+}
+
+.comment-time {
+  font-size: 10px;
+  margin-bottom: 0px;
+}
+
+.comment-author {
+  margin-bottom: 0px;
+}
+
+.comment-text {
+  margin-bottom: 16px;
+}
+
+.dropdown-menu {
+  background-color: #4f5b69;
+}
+
+.dropdown-item {
+  color: #E1FFFF;
+}
+
+.dropdown-item:hover {
+  color: magenta;
+  transition: all 0.5s ease;
+  background-color: #4f5b69;
+}
+
+.new-ticket-title {
+  color: #E1FFFF;
+}
+
+.control-label {
+  color: #E1FFFF;
+  text-transform: uppercase;
+}
+
+.form-control, .form-control:focus {
+  background-color: #23282E;
+  border: none;
+  color: #E1FFFF;
+}
+
+.payment-title {
+  margin-top: 50px;
+  color: #E1FFFF;
+}
+
+.payment-amount {
+  color: #E1FFFF;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  background-color: #23282E;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+}
+
+#submit_payment_btn, #publish {
+  margin: auto;
+  display: block;
+}
+
+.login {
+  margin-bottom: 10px;
+}
+
+.help-block {
+  color: #E1FFFF;
+  font-size: 10px;
 }

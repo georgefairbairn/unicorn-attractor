@@ -1,5 +1,6 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.utils import timezone
 from django.conf import settings
@@ -12,11 +13,14 @@ import stripe
 stripe.api_key = settings.STRIPE_SECRET
 
 # Create your views here.
-def all_tickets(request):
-    tickets = Ticket.objects.all()
-    comments = Comment.objects.all()
-    comment_form = CommentForm()
-    return render(request, 'tickets.html', {'tickets': tickets, 'comments': comments, 'comment_form': comment_form})
+def all_tickets(request, sort=None):
+    if sort == 'bugs':
+        tickets = Ticket.objects.filter(ticket_type='Bug')
+    elif sort =='feature_requests':
+        tickets = Ticket.objects.filter(ticket_type='Feature Request')
+    else:
+        tickets = Ticket.objects.all()
+    return render(request, 'tickets.html', {'tickets': tickets})
     
 
 @login_required    
@@ -24,7 +28,8 @@ def upvote(request, pk):
     ticket = get_object_or_404(Ticket, pk=pk)
     ticket.upvotes += 1
     ticket.save()
-    return redirect(reverse('index'))
+    messages.error(request, "Upvote recorded!")
+    return redirect(ticket_detail, ticket.pk)
     
 @login_required
 def upvote_payment(request, pk):
@@ -65,7 +70,22 @@ def upvote_payment(request, pk):
     
 def ticket_detail(request, pk):
     ticket = get_object_or_404(Ticket, pk=pk)
-    return render(request, 'ticket-detail.html', {'ticket': ticket})
+    comments = Comment.objects.filter(ticket=ticket)
+    
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            author = request.user if request.user else 'anonymous'
+            comment = Comment(ticket=ticket,
+                                author=author,
+                                comment=comment_form.cleaned_data['comment'],
+                                comment_date=timezone.now())
+            comment.save()
+            return redirect(ticket_detail, ticket.pk)
+    else:
+        comment_form = CommentForm()
+    
+    return render(request, 'ticket-detail.html', {'ticket': ticket, 'comments': comments, 'comment_form': comment_form})
     
 
 @login_required
@@ -133,23 +153,62 @@ def create_feature_request(request):
                                             
                                             
 @login_required
-def edit_ticket(request, pk=None, ttype=None):
+def edit_ticket(request, pk):
     ticket = get_object_or_404(Ticket, pk=pk) if pk else None
-    edit_state = True
     if request.method == "POST":
         form = TicketForm(request.POST, request.FILES, instance=ticket)
         if form.is_valid():
-            ticket = Ticket(title=form.cleaned_data['title'],
-                            summary=form.cleaned_data['summary'],
-                            ticket_type=form.cleaned_data['ticket_type'],
-                            screenshot=form.cleaned_data['screenshot'],
-                            creator=request.user,
-                            category=form.cleaned_data['category'],
-                            initiation_date=timezone.now())
+            ticket.title = form.cleaned_data['title']
+            ticket.summary = form.cleaned_data['summary']
+            ticket.screenshot = form.cleaned_data['screenshot']
+            ticket.category = form.cleaned_data['category']
             ticket.save()
             return redirect(ticket_detail, ticket.pk)
     else:
-        if pk == None:
-            edit_state = False
         form = TicketForm(instance=ticket)
-    return render(request, 'create-ticket.html', {'form': form, 'edit_state': edit_state})
+        html_page = 'edit-bug.html' if ticket.ticket_type == 'Bug' else 'edit-feature-request.html'
+    return render(request, html_page, {'form': form})
+    
+
+@login_required
+def delete_ticket(request, pk):
+    ticket = get_object_or_404(Ticket, pk=pk)
+    ticket.delete()
+    return redirect(reverse('index'))
+
+
+@login_required
+def change_status_backlog(request, pk):
+    ticket = get_object_or_404(Ticket, pk=pk)
+    if ticket.completion_date:
+        ticket.completion_date = None
+    ticket.status = 'Backlog'
+    ticket.save()
+    return redirect(ticket_detail, ticket.id) 
+  
+    
+@login_required
+def change_status_in_progress(request, pk):
+    ticket = get_object_or_404(Ticket, pk=pk)
+    if ticket.completion_date:
+        ticket.completion_date = None
+    ticket.status = 'In Progress'
+    ticket.save()
+    return redirect(ticket_detail, ticket.id) 
+    
+@login_required
+def change_status_complete(request, pk):
+    ticket = get_object_or_404(Ticket, pk=pk)
+    
+    subject = "Unicorn Attractor - Ticket #" + str(ticket.id)
+    from_email, to = 'uattractor@gmail.com', request.user.email
+    html_content = "<p>Hi " + ticket.creator + "</p><p>You raised the below ticket on our website:</p><p><strong>TYPE:</strong> " + ticket.ticket_type + "</p><p><strong>TITLE:</strong> " + ticket.title + "</p><p>This email is to let you know this ticket has been completed. Thanks again for raising your issue.</p><p>Many thanks,</p><p>The Unicorn Attractor Team</p>" 
+    msg = EmailMessage(subject, html_content, from_email, [to])
+    msg.content_subtype = "html"
+    msg.send()
+                
+    ticket.status = 'Complete'
+    ticket.completion_date = timezone.now()
+    ticket.save()
+    return redirect(ticket_detail, ticket.id)
+    

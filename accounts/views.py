@@ -3,6 +3,8 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from accounts.forms import UserLoginForm, UserRegistrationForm
 from django.contrib.auth.models import User
+from tickets.models import Ticket
+from comments.models import Comment
 
 # Create your views here.
 def index(request):
@@ -68,4 +70,7 @@ def registration(request):
 def profile(request):
     """ The user's profile page """
     user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {'profile': user})
+    bugs = Ticket.objects.filter(creator=user.username, ticket_type='Bug').count()
+    feature_requests = Ticket.objects.filter(creator=user.username, ticket_type='Feature Request').count()
+    comments = Comment.objects.filter(author=user.username).count()
+    return render(request, 'profile.html', {'user': user, 'bugs': bugs, 'feature_requests': feature_requests, 'comments': comments})

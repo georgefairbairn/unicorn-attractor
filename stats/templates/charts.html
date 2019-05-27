@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %} Statistics {% endblock %} 
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="col-12 text-left">
+                        <span><i class="fas fa-chart-bar fa-lg page-icon"></i>TOTAL TICKETS RAISED</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="totalTickets" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="col-xs-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="col-12 text-left">
+                        <span><i class="fas fa-bug fa-lg page-icon"></i>TICKETS YOU RAISED</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="userTickets" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="col-12 text-left">
+                        <span><i class="fas fa-bug fa-lg page-icon"></i>BUGS BY STATUS</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="bugTickets" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %} 
+{% block jquery %}
+<script>
+    $(document).ready(function(){
+        var ctx = document.getElementById('totalTickets').getContext('2d');
+        var ctx2 = document.getElementById('bugTickets').getContext('2d');
+        var ctx3 = document.getElementById('userTickets').getContext('2d');
+        
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Bugs', 'Feature Requests'],
+                datasets: [{
+                    label: 'Number of tickets',
+                    data: [{{ total_bugs }}, {{ total_feature_requests }}],
+                    backgroundColor: [
+                        'magenta',
+                        '#2E353D',
+                    ],
+                    borderColor: [
+                        'magenta',
+                        '#2E353D',
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+        
+        var myChart2 = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Bugs', 'Feature Requests'],
+                datasets: [{
+                    label: 'Open Tickets',
+                    data: [{{ total_bugs }}, {{ total_feature_requests }}],
+                    backgroundColor: [
+                        'magenta',
+                        '#2E353D',
+                    ],
+                    borderColor: [
+                        'magenta',
+                        '#2E353D',
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+        
+        var myChart3 = new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: ['Bugs', 'Feature Requests'],
+                datasets: [{
+                    label: 'Bugs'
+                    data: [{{ user_bugs }}, {{ user_feature_requests }}],
+                    backgroundColor: [
+                        'magenta',
+                        '#2E353D',
+                    ],
+                    borderColor: [
+                        'magenta',
+                        '#2E353D',
+                    ],
+                    borderWidth: 1
+                }]
+            }
+        });
+    })
+</script>
+{% endblock %}

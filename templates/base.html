@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     {% block head_js %}
     {% endblock %}
@@ -26,50 +27,50 @@
         <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
         <div class="menu-list">
             <ul id="menu-content" class="menu-content collapse out">
-                <li>
-                    <a href="{% url 'index' %}">
+                <a href="{% url 'index' %}">
+                    <li>
                         <i class="fa fa-ticket-alt fa-lg page-icon"></i> TICKETS
-                    </a>
-                </li>
+                    </li>
+                </a>
                 <li data-toggle="collapse" data-target="#ticket-types" class="collapsed">
-                    <a><i class="fa fa-plus fa-lg page-icon"></i> CREATE TICKET <span class="arrow"></span></a>
+                    <i class="fa fa-plus fa-lg page-icon"></i> CREATE TICKET <span class="arrow"></span>
                 </li>
                 <ul class="sub-menu collapse" id="ticket-types">
-                    <li><a href="{% url 'create_bug' %}"><i class="fa fa-bug fa-lg"></i> BUG</a></li>
-                    <li><a data-toggle="modal" data-target="#payment-reminder"><i class="fa fa-lightbulb fa-lg"></i> FEATURE REQUEST</a></li>
+                    <a href="{% url 'create_bug' %}"><li><i class="fa fa-bug fa-lg page-icon"></i> BUG</li></a>
+                    <a data-toggle="modal" data-target="#payment-reminder"><li><i class="fa fa-lightbulb fa-lg page-icon"></i> FEATURE REQUEST</li></a>
                 </ul>
-                <li>
-                    <a href="#">
+                <a href="{% url 'get_charts' %}">
+                    <li>
                         <i class="fa fa-chart-bar fa-lg page-icon"></i> STATISTICS
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'get_posts' %}">
+                    </li>
+                </a>
+                <a href="{% url 'get_posts' %}">
+                    <li>
                         <i class="fa fa-newspaper fa-lg page-icon"></i> BLOG
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
+                    </li>
+                </a>
+                <a href="#">
+                    <li>
                         <i class="fa fa-info-circle fa-lg page-icon"></i> ABOUT
-                    </a>
+                    </li>
                 </li>
                 {% if user.is_authenticated %}
-                <li>
-                    <a href="{% url 'profile' %}">
+                <a href="{% url 'profile' %}">
+                    <li>
                         <i class="fa fa-user-circle fa-lg page-icon"></i> PROFILE
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'logout' %}">
+                    </li>
+                </a>
+                <a href="{% url 'logout' %}">
+                    <li>
                         <i class="fa fa-sign-out-alt fa-lg page-icon"></i> LOG OUT
-                    </a>
-                </li>
+                    </li>
+                </a>
                 {% else %}
-                <li>
-                    <a href="{% url 'login' %}">
+                <a href="{% url 'login' %}">
+                    <li>
                         <i class="fa fa-sign-in-alt fa-lg page-icon"></i> LOG IN
-                    </a>
-                </li>
+                    </li>
+                </a>
                 {% endif %}
             </ul>
         </div>
@@ -100,12 +101,13 @@
                     <p>This pays for the developer's time, and you will receive an email once the feature has been implemented.</p>
                 </div>
                 <div class="modal-footer">
-                    <a class="btn btn-secondary" data-dismiss="modal">Cancel</a>
-                    <a href="{% url 'create_feature_request' %}" class="btn btn-primary">Proceed To Payment</a>
+                    <a class="btn btn-secondary" data-dismiss="modal">CANCEL</a>
+                    <a href="{% url 'create_feature_request' %}" class="btn btn-base">PROCEED TO PAYMENT</a>
                 </div>
             </div>
         </div>
     </div>
+    {% block jquery %}{% endblock %}  
 </body>
 
 </html>
