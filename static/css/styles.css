@@ -1,6 +1,6 @@
 .nav-side-menu {
   overflow: auto;
-  font-family: 'Staatliches';
+  font-family: verdana;
   font-size: 12px;
   font-weight: 200;
   background-color: #2e353d;
@@ -149,6 +149,7 @@
   
   .brand {
     text-align: left !important;
+    font-family: 'Staatliches';
     font-size: 22px;
     padding-left: 20px;
     line-height: 50px !important;
