@@ -49,9 +49,9 @@
                         <i class="fa fa-newspaper fa-lg page-icon"></i> BLOG
                     </li>
                 </a>
-                <a href="#">
+                <a href="{% url 'help' %}">
                     <li>
-                        <i class="fa fa-info-circle fa-lg page-icon"></i> ABOUT
+                        <i class="fa fa-info-circle fa-lg page-icon"></i> HELP
                     </li>
                 </li>
                 {% if user.is_authenticated %}

@@ -374,7 +374,7 @@ body {
   border-radius: 10px;
 }
 
-#submit_payment_btn, #publish {
+#submit_payment_btn, #publish, .create {
   margin: auto;
   display: block;
 }

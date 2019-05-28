@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, TemplateView
 from accounts import urls as urls_accounts
 from tickets import urls as urls_tickets
 from blog import urls as urls_blog
@@ -31,5 +31,6 @@ urlpatterns = [
     url(r'^tickets/', include(urls_tickets)),
     url(r'^blog/', include(urls_blog)),
     url(r'^stats/', include(urls_stats)),
+    url(r'^help/$', TemplateView.as_view(template_name='help.html'), name='help'),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
 ]

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %} Help Page {% endblock %} 
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="col-12 text-left">
+                    <span><i class="fas fa-bug fa-lg page-icon"></i>HOW TO CREATE A BUG</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div align="center" class="embed-responsive embed-responsive-16by9">
+                    <video controls preload="none" class="embed-responsive-item">
+                        <source src="/media/video/create_bug.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="col-12 text-left">
+                    <span><i class="fas fa-bug fa-lg page-icon"></i>HOW TO CREATE A FEATURE REQUEST</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <div align="center" class="embed-responsive embed-responsive-16by9">
+                    <video controls class="embed-responsive-item">
+                        <source src="/media/video/create_fr.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
