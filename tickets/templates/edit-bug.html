@@ -6,6 +6,10 @@
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | as_bootstrap }}
-        <button type="submit" class="btn btn-info">SAVE</button>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-info">SAVE</button>    
+            </div>
+        </div>
     </form>
 {% endblock %}

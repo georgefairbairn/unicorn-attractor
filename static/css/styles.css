@@ -149,7 +149,9 @@
   
   .brand {
     text-align: left !important;
-    font-size: 22px;
+    font-family: 'Staatliches', cursive;
+    font-size: 30px;
+    text-align: center;
     padding-left: 20px;
     line-height: 50px !important;
     padding-top: 20px;
@@ -210,6 +212,8 @@
     font-size: 20px;
     margin-bottom: 20px;
   }
+  
+}
 }
 
 @media (min-width: 767px) {
