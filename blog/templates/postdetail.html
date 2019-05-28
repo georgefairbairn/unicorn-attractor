@@ -3,7 +3,7 @@
     {% if post.image %}
     <div class="row">
         <div class="col-12">
-            <img src="/media/{{ post.image }}" class="img-fluid" alt="Responsive image">
+            <img src="{{ MEDIA_URL }}{{ post.image }}" class="img-fluid" alt="Responsive image">
         </div>
     </div>
     {% endif %}
