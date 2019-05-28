@@ -14,15 +14,17 @@
 <h1>UPVOTE FEATURE REQUEST</h1>
 <div class="container">
     <div class="row">
-        <form role="form" method="POST" id="payment-form" action="{% url 'upvote_payment' pk=ticket.pk %}">
-            <div class="form-group col-12">
-                {% csrf_token %} 
-                {{ payment_form | as_bootstrap }}
-            </div>
-            <div class="form-group col-md-12">
-                <input class=" btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
-            </div>
-        </form>
+        <div class="col-12">
+            <form role="form" method="POST" id="payment-form" action="{% url 'upvote_payment' pk=ticket.pk %}">
+                <div class="form-group col-12">
+                    {% csrf_token %} 
+                    {{ payment_form | as_bootstrap }}
+                </div>
+                <div class="form-group col-md-12">
+                    <input class=" btn btn-base" id="submit_payment_btn" name="commit" type="submit" value="SUBMIT PAYMENT">
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
