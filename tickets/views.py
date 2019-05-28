@@ -20,7 +20,7 @@ def all_tickets(request, sort=None):
         tickets = Ticket.objects.filter(ticket_type='Feature Request')
     else:
         tickets = Ticket.objects.all()
-    return render(request, 'tickets.html', {'tickets': tickets})
+    return render(request, 'index.html', {'tickets': tickets})
     
 
 @login_required    
