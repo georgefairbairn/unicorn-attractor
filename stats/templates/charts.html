@@ -6,46 +6,6 @@
             <div class="card">
                 <div class="card-header">
                     <div class="col-12 text-left">
-                        <span><i class="fas fa-chart-bar fa-lg page-icon"></i>TOTAL TICKETS RAISED</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <canvas id="totalTickets" width="400" height="400"></canvas>
-                </div>
-            </div>
-        </div>
-        {% if user.is_authenticated %}
-        <div class="col-xs-12 col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="col-12 text-left">
-                        <span><i class="fas fa-user-circle fa-lg page-icon"></i>TICKETS YOU RAISED</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <canvas id="userTickets" width="400" height="400"></canvas>
-                </div>
-            </div>
-        </div>
-        {% endif %}
-    <!--</div>-->
-    <!--<div class="row">-->
-        <div class="col-xs-12 col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="col-12 text-left">
-                        <span><i class="fas fa-tasks fa-lg page-icon"></i>TOTAL TICKETS BY STATUS</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <canvas id="statusTickets" width="400" height="400"></canvas>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="col-12 text-left">
                         <span><i class="fas fa-bug fa-lg page-icon"></i>HIGHEST VOTED BUG</span>
                     </div>
                 </div>
@@ -89,6 +49,46 @@
                         </div>
                     </div>
                     
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="col-12 text-left">
+                        <span><i class="fas fa-chart-bar fa-lg page-icon"></i>TOTAL TICKETS RAISED</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="totalTickets" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="col-xs-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="col-12 text-left">
+                        <span><i class="fas fa-user-circle fa-lg page-icon"></i>TICKETS YOU RAISED</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="userTickets" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    <!--</div>-->
+    <!--<div class="row">-->
+        <div class="col-xs-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <div class="col-12 text-left">
+                        <span><i class="fas fa-tasks fa-lg page-icon"></i>TOTAL TICKETS BY STATUS</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="statusTickets" width="400" height="400"></canvas>
                 </div>
             </div>
         </div>
