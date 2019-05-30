@@ -1,6 +1,5 @@
 from django.test import TestCase
 from .models import Ticket
-from django.contrib.auth.models import User
 
 # Create your tests here.
 class TicketTests(TestCase):
@@ -20,13 +19,12 @@ class TicketTests(TestCase):
                                     creator='ticket_tester',
                                     category='Test Category'
                                 ).save()
-        user = User.objects.create(email="ticket_test_email@test.com",
-                    username="ticket_tester",
-                    first_name='Tester',
-                    last_name='McTestface',
-                    password1='testing123',
-                    password2='testing123'
-                    ).save()
+        self.client.post('/accounts/register/', {'email': 'ticket_test_email@test.com',
+                                                'username': 'ticket_tester',
+                                                'first_name': 'Tester',
+                                                'last_name': 'McTestface',
+                                                'password1': 'testing123',
+                                                'password2': 'testing123'})
     
     # Ensure created tickets render on all tickets page
     def test_bug_rendered(self):
