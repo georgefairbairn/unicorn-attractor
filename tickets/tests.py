@@ -29,7 +29,7 @@ class TicketTests(TestCase):
     # Ensure created tickets render on all tickets page
     def test_bug_rendered(self):
         response = self.client.get('/tickets/')
-        self.assertInHTML(b'Example bug', response.content)
+        self.assertIn(b'Example bug', response.content)
         
         
         
