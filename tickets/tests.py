@@ -7,13 +7,13 @@ class TicketTests(TestCase):
     
     # Setting up test database and logging test user in before executing tests
     def setUp(self):
-        bug = Ticket.objects.create(title="Example bug",
+        self.bug = Ticket.objects.create(title="Example bug",
                         summary="This is a test summary for a bug",
                         ticket_type='Bug',
                         creator='ticket_tester',
                         category='Test Category'
                     ).save()
-        feature_request = Ticket.objects.create(title="Test Feature Request",
+        self.feature_request = Ticket.objects.create(title="Test Feature Request",
                                     summary="This is a test feature request that I would like to suggest",
                                     ticket_type='Feature Request',
                                     creator='ticket_tester',
@@ -30,6 +30,12 @@ class TicketTests(TestCase):
     def test_bug_rendered(self):
         response = self.client.get('/tickets/')
         self.assertIn(b'EXAMPLE BUG', response.content)
+        self.assertIn(b'TEST FEATURE REQUEST', response.content)
+        
+    # Ensure upvoting bug increments upvotes by 1
+    def test_bug_upvote_loads(self):
+        response = self.client.get('/tickets/upvote/bug/{0}'.format(self.bug.pk))
+        self.assertEqual(response.status_code, 302)
         
         
         
