@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/neon-flights/unicorn-attractor.svg?branch=master)](https://travis-ci.org/neon-flights/unicorn-attractor)
 
 <p align="center">
-  <img src="/media/images/ua_logo.png" width="700">
+  <img src="../../media/images/ua_logo.png" width="700">
 </p>
 
 # [Unicorn Attractor](https://unicorn-attractor-app-ci.herokuapp.com/)
