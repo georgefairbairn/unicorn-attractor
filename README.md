@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/neon-flights/unicorn-attractor.svg?branch=master)](https://travis-ci.org/neon-flights/unicorn-attractor)
 
 <p align="center">
-  <img src="https://github.com/neon-flights/unicorn-attractor/tree/master/media/images/ua_logo.png" width="700">
+  <img src="https://github.com/neon-flights/unicorn-attractor/blob/master/media/images/ua_logo.png" width="700">
 </p>
 
 # [Unicorn Attractor](https://unicorn-attractor-app-ci.herokuapp.com/)
@@ -29,7 +29,7 @@ The project brief outlined the following requirements:
 #### Home Page
 
 <p align="center">
-<img src="https://github.com/neon-flights/unicorn-attractor/tree/master/media/images/index_wireframe.png" width="700">
+<img src="https://github.com/neon-flights/unicorn-attractor/blob/master/media/images/index_wireframe.png" width="700">
 </p>
 
 In the initial design stage, it was important to not have all the ticket information all on one page. Therefore the decision was taken to give snippets of information on each ticket, directing the user to click on the ticket to reveal more information.
@@ -39,7 +39,7 @@ In the initial design stage, it was important to not have all the ticket informa
 In the final design, the application drew on the layout from the Wireframes and implemented a dark theme, with the main background and navbars being grey and dark grey respectively. Any hoverable elements (buttons or links) transition to a pink colour, matching the colours in the logo.
 
 <p align="center">
-<img src="https://github.com/neon-flights/unicorn-attractor/tree/master/media/images/mobile.png" width="700">
+<img src="https://github.com/neon-flights/unicorn-attractor/blob/master/media/images/mobile.png" width="700">
 </p>
 
 With a mobile-first approach to design, the application behaves just as well on smaller screens as it would on larger screens. When viewing the application on a smaller screen, the brand image changes to the brand name, but the other elements on the page follow the same design patterns. The `navbar` collapses as expected, and can be expanded by clicking the familiar hamburger icon seen on most modern websites.
@@ -47,7 +47,7 @@ With a mobile-first approach to design, the application behaves just as well on 
 Each ticket is displayed on screen in a Bootstrap `card` element. The ticket headlines (e.g. title, summary, status upvotes) are displayed on the `card` and the user has the ability to upvote the ticket from the homepage too. Clicking the 'VIEW' button on the ticket will take the user to another page, allowing them to see the full details of the _bug_ or _feature request_.
 
 <p align="center">
-<img src="https://github.com/neon-flights/unicorn-attractor/tree/master/media/images/form.png" width="700">
+<img src="https://github.com/neon-flights/unicorn-attractor/blob/master/media/images/form.png" width="700">
 </p>
 
 The user is able to create tickets and feature requests by filling out relevant forms on the website. The forms are rendered from Django, but are beautified by a package within the application.
@@ -62,7 +62,7 @@ The application uses the Django framework to implement the varying functionality
 Provided the user is logged in (using the `@login_required` django authentication check), the user can raise a _bug_ by selecting the option in the `navbar`. Raising a _bug_ warrants a slightly different process to raising a _feature request_, so it was necessary to create separate methods and urls to achieve the necessary results.
 
 <p align="center">
-<img src="https://github.com/neon-flights/unicorn-attractor/tree/master/media/images/bug.png" width="700">
+<img src="https://github.com/neon-flights/unicorn-attractor/blob/master/media/images/bug.png" width="700">
 </p>
 
 Once the user fills in the 'BUG CREATOR' form, an object is created in the database. Not all of the fields are presented to the user in the form, as `default` values like `initiation_date` and `views` are generated automatically.
@@ -74,7 +74,7 @@ Once the _bug_ is raised, the user is directed to the detail view of the _bug_ t
 Again, provided the user is logged in, they can request new features to be added to the application. A Bootstrap `modal` flashes up to remind the user that selecting 'CREATE FEATURE REQUEST' in the `navbar` will require a payment. Upon confirmation of this warning, the user is directed to a `form`, similar to that used to create a _bug_.
 
 <p align="center">
-<img src="https://github.com/neon-flights/unicorn-attractor/tree/master/media/images/purchase_fr.png" width="700">
+<img src="https://github.com/neon-flights/unicorn-attractor/blob/master/media/images/purchase_fr.png" width="700">
 </p>
 
 Once the detail of the _feature request_ has been written, the user is asked to input credit card details so that a payment of £50 can be taken. The method of taking payment is implemented using Stripe, and a Javascript file is referenced in the HTML to facilitate this. Upon successful receipt of the payment, a message flashes on sceeen to confirm the payment, and a `Ticket` object is written into the database (with the `total_paid` field being updated too).
@@ -82,7 +82,7 @@ Once the detail of the _feature request_ has been written, the user is asked to 
 ### Upvoting
 
 <p align="center">
-<img src="https://github.com/neon-flights/unicorn-attractor/tree/master/media/images/upvote.png" width="700">
+<img src="https://github.com/neon-flights/unicorn-attractor/blob/master/media/images/upvote.png" width="700">
 </p>
 
 The user is able to upvote a _bug_ (provided they are logged in). 
@@ -104,7 +104,7 @@ Emails are also sent when the user forgets their password. Instead of opting for
 ### Statistics
 
 <p align="center">
-<img src="https://github.com/neon-flights/unicorn-attractor/tree/master/media/images/graphs.png" width="700">
+<img src="https://github.com/neon-flights/unicorn-attractor/blob/master/media/images/graphs.png" width="700">
 </p>
 
 Clicking the 'STATISTICS' option in the `navbar` takes the user to a page where they can view varying statistics relating to the _bugs_ and _feature requests_ currently in the database.
