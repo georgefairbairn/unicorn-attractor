@@ -6,7 +6,7 @@
 
 # [Unicorn Attractor](https://unicorn-attractor-app-ci.herokuapp.com/)
 
-This application is an issue tracking system allowing users to raise bugs and suggest feature requests for a web application. The core functionality of the application relies on the Django framework, and a PostGres database is used to store information relating to the different data models within the project.
+This application is an issue tracking system allowing users to raise _bugs_ and suggest _feature requests_ for a web application. The core functionality of the application relies on the Django framework, and a PostGres database is used to store information relating to the different data models within the project.
 
  
 ## UX
@@ -46,11 +46,9 @@ With a mobile-first approach to design, the application behaves just as well on 
 
 Each ticket is displayed on screen in a Bootstrap `card` element. The ticket headlines (e.g. title, summary, status upvotes) are displayed on the `card` and the user has the ability to upvote the ticket from the homepage too. Clicking the 'VIEW' button on the ticket will take the user to another page, allowing them to see the full details of the _bug_ or _feature request_.
 
-`<form method="POST" enctype="multipart/form-data">`
-    `{% csrf_token %}`
-    `{{ form | as_bootstrap }}`
-    `<button type="submit" class="btn btn-base create">CREATE</button>`  
-`</form>`
+<p align="center">
+<img src="https://github.com/neon-flights/unicorn-attractor/tree/master/media/images/form.png" width="700">
+</p>
 
 The user is able to create tickets and feature requests by filling out relevant forms on the website. The forms are rendered from Django, but are beautified by a package within the application.
 
@@ -87,13 +85,13 @@ Once the detail of the _feature request_ has been written, the user is asked to 
 <img src="https://github.com/neon-flights/unicorn-attractor/tree/master/media/images/upvote.png" width="700">
 </p>
 
-The user is able to upvote a bug (provided they are logged in). 
+The user is able to upvote a _bug_ (provided they are logged in). 
 
 If they choose to upvote a feature request though, another modal appears to remind the user that an upvote to a feature request requires a payment of £5. Should the user wish to proceed, the same form used to take payment on the 'FEATURE REQUEST CREATOR' page is displayed to the user. Again, successful payment flashes a 'SUCCESS' message on screen, and the `total_paid` field of the ticket is incremented by £5.
 
 ### User Permissions
 
-When a user registers for an account in the application, they are automatically given 'BASIC' access rights. This allows them to 'EDIT' and 'DELETE' bugs and feature requests, but only if they are the creator of that ticket. 
+When a user registers for an account in the application, they are automatically given 'BASIC' access rights. This allows them to 'EDIT' and 'DELETE' _bugs_ and feature requests, but only if they are the creator of that ticket. 
 
 If the user has 'ADMIN' access rights, they are able to 'EDIT', 'DELETE' and 'CHANGE STATUS' of the ticket. This is because it is likely that the admin user is the person implementing implementing the _feature request_ or the _bug_ fix.
 
