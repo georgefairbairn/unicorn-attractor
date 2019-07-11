@@ -6,7 +6,7 @@
 
 # [Unicorn Attractor](https://unicorn-attractor-app-ci.herokuapp.com/)
 
-This application is an issue tracking system allowing users to raise _bugs_ and suggest _feature requests_ for a web application. The core functionality of the application relies on the Django framework, and a PostGres database is used to store information relating to the different data models within the project.
+This application is an issue tracking system allowing users to raise _bugs_ and suggest _feature requests_ for a web application. The core functionality of the application relies on the Django framework, and a PostgreSQL database is used to store information relating to the different data models within the project.
 
  
 ## UX
